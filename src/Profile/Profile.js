@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, TextInput, Dimensions, Image, TouchableOpacity, ImageBackground,
-    ScrollView } from 'react-native';
-import { Container, Footer, FooterTab, Button, Icon, Title } from 'native-base';
-import { Header} from 'react-native-elements';
+import {
+    View, Text, TextInput, Dimensions, Image, TouchableOpacity, ImageBackground,
+    ScrollView
+} from 'react-native';
 
 import { style } from './Style';
 
@@ -30,47 +30,40 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Header backgroundColor='#003366'
-                    leftComponent={{ icon: 'menu', color: 'white' }}
-                    centerComponent={{ text: 'Pick My Cloth', style: { color: 'white', fontWeight: "bold", fontSize: 20 } }}
-                    rightComponent={{ icon: 'person', color: 'white' }}
-                />
-                <ScrollView style={{ width: "100%", height: "100%" }}>
-                    <View style={this.state.style.loginpage} >
-                        <Text style={this.state.style.logintext}></Text>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>Name</Text>
-                            <TextInput style={this.state.style.username} value={"Jagadeesh Y M"} onChangeText={(text) => this.setState({ "username": text })} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>Email</Text>
-                            <TextInput style={this.state.style.username} value={"jagadeesh1113@gmail.com"} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>PHONE</Text>
-                            <TextInput style={this.state.style.username} value={"9840183109"} onChangeText={(text) => this.setState({ "shopName": text })} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>ADDRESS</Text>
-                            <TextInput style={this.state.style.username} value={""} onChangeText={(text) => this.setState({ "gstno": text })} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>CITY</Text>
-                            <TextInput secureTextEntry={true} value={""} onChangeText={(text) => this.setState({ "password": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <Text style={this.state.style.centername}>POSTAL CODE</Text>
-                            <TextInput value={""} onChangeText={(text) => this.setState({ "shopaddress": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
-                        </View>
-                        <View style={this.state.style.inputs}>
-                            <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
-                                <Text style={this.state.style.saveButtonLabel}>Save</Text>
-                            </TouchableOpacity>
-                        </View>
+            <ScrollView style={{ width: "100%", height: "100%" }}>
+                <View style={this.state.style.loginpage} >
+                    <Text style={this.state.style.logintext}></Text>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>Name</Text>
+                        <TextInput style={this.state.style.username} value={"Jagadeesh Y M"} onChangeText={(text) => this.setState({ "username": text })} underlineColorAndroid="#6090" />
                     </View>
-                </ScrollView>
-            </Container>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>Email</Text>
+                        <TextInput style={this.state.style.username} value={"jagadeesh1113@gmail.com"} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" />
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>PHONE</Text>
+                        <TextInput style={this.state.style.username} value={"9840183109"} onChangeText={(text) => this.setState({ "shopName": text })} underlineColorAndroid="#6090" />
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>ADDRESS</Text>
+                        <TextInput style={this.state.style.username} value={""} onChangeText={(text) => this.setState({ "gstno": text })} underlineColorAndroid="#6090" />
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>CITY</Text>
+                        <TextInput secureTextEntry={true} value={""} onChangeText={(text) => this.setState({ "password": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <Text style={this.state.style.centername}>POSTAL CODE</Text>
+                        <TextInput value={""} onChangeText={(text) => this.setState({ "shopaddress": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
+                            <Text style={this.state.style.saveButtonLabel}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
         )
     }
 }
