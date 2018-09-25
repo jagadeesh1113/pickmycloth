@@ -25,9 +25,9 @@ export default class Login extends React.Component {
         navigate("Profile");
     }
 
-    signUp() {
+    beforeSignUp() {
         const { navigate } = this.props.navigation;
-        navigate("Signup");
+        navigate("BeforeSignup");
     }
 
     forgetPassword() {
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={this.state.style.inputs}>
-                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
+                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.beforeSignUp() }.bind(this)}>
                         <Text style={this.state.style.loginbtnlabel}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>

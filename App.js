@@ -4,6 +4,7 @@ import { Root } from "native-base";
 import Login from './src/Login/Login';
 import { createStackNavigator } from 'react-navigation';
 import Signup from './src/Signup/Signup';
+import BeforeSignup from './src/BeforeSignup/BeforeSignup';
 import Profile from './src/Profile/Profile';
 import ForgetPassword from './src/ForgetPassword/ForgetPassword';
 
@@ -19,6 +20,7 @@ export default class App extends React.Component {
 
 const Routes = createStackNavigator({
   Login: { screen: Login },
+  BeforeSignup: { screen: BeforeSignup},
   Signup: { screen: Signup },
   Profile: { screen: Profile },
   ForgetPassword: { screen: ForgetPassword}
