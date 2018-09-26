@@ -39,7 +39,11 @@ export const style = StyleSheet.create({
                 marginLeft:"10%",
                 marginTop:20,
                 fontWeight: "900",
+        },
 
+        error:{
+                color:"red",
+                marginLeft:"10%",
         },
         
         username:{

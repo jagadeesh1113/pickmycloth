@@ -3,20 +3,21 @@ import {
     View, Text, TextInput, Dimensions, Image, TouchableOpacity, ImageBackground,
     ScrollView
 } from 'react-native';
-
+import validate from '../Validation/validate_wrapper';
 import { style } from './Style';
 
 export default class Profile extends React.Component {
 
-    state = {
-        style: style,
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
-    }
-
-
     constructor(props) {
         super(props);
+
+        this.state = {
+            style: style,
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
+            name: 'Jagadeesh Y M',
+            nameError: ''
+        }
     }
 
     static navigationOptions = {
@@ -40,11 +41,17 @@ export default class Profile extends React.Component {
                     <Text style={this.state.style.logintext}></Text>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>Name</Text>
-                        <TextInput style={this.state.style.username} value={"Jagadeesh Y M"} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true} />
+                        <TextInput style={this.state.style.username} 
+                         onBlur={() => {
+                            this.setState({
+                              nameError: validate('name', this.state.name)
+                            })
+                          }} value={this.state.name} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true} />
+                        <Text style={this.state.style.error}>{this.state.nameError}</Text>
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>Email</Text>
-                        <TextInput style={this.state.style.username} value={"jagadeesh1113@gmail.com"} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
+                        <TextInput style={this.state.style.username} value={"jagadeesh1113@gmail.com"} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" editable={false}/>
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>PHONE</Text>

@@ -1,19 +1,29 @@
 import React from 'react';
 import { View, Text, TextInput, Dimensions, TouchableOpacity } from 'react-native';
-
+import validate from '../Validation/validate_wrapper';
 import { style } from './Style';
 
 export default class Signup extends React.Component {
 
-    state = {
-        style: style,
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
-        loading: true,
-    }
+    
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            style: style,
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height,
+            loading: true,
+            email: '',
+            name: '',
+            password: '',
+            confirmpassword: '',
+            nameError: '',
+            emailError: '',
+            passwordError: '',
+            confirmpasswordError: ''
+        }
     }
 
     static navigationOptions = {
@@ -36,19 +46,42 @@ export default class Signup extends React.Component {
                 <Text style={this.state.style.logintext}></Text>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NAME</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true}/>
+                    <TextInput style={this.state.style.username} 
+                    onBlur={() => {
+                        this.setState({
+                          nameError: validate('name', this.state.name)
+                        })
+                      }} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true}/>
+                    <Text style={this.state.style.error}>{this.state.nameError}</Text>
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>EMAIL</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
+                    <TextInput style={this.state.style.username} onBlur={() => {
+                        this.setState({
+                          emailError: validate('email', this.state.email)
+                        })
+                      }} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
+                    <Text style={this.state.style.error}>{this.state.emailError}</Text>
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>PASSWORD</Text>
-                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "password": text })} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} style={this.state.style.username} 
+                    onBlur={() => {
+                        this.setState({
+                          passwordError: validate('password', this.state.password)
+                        })
+                      }} onChangeText={(text) => this.setState({ "password": text })} underlineColorAndroid="#6090" />
+                    <Text style={this.state.style.error}>{this.state.passwordError}</Text>
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
-                    <TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} 
+                    onBlur={() => {
+                        this.setState({
+                          confirmpasswordError: validate('password', this.state.confirmpassword)
+                        })
+                      }} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text>
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>

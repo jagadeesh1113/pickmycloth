@@ -30,6 +30,11 @@
                                         marginTop:20,
                                         fontWeight: "900",
                                 },
+
+                                error:{
+                                        color:"red",
+                                        marginLeft:"10%",
+                                },
                                 
                                 username:{
                                         width:"85%",
