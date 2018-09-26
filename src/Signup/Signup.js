@@ -36,7 +36,7 @@ export default class Signup extends React.Component {
                 <Text style={this.state.style.logintext}></Text>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NAME</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" />
+                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true}/>
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>EMAIL</Text>

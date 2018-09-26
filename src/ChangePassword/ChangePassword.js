@@ -29,7 +29,7 @@ export default class ChangePassword extends React.Component {
             <View style={this.state.style.loginpage} >
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CURRENT PASSWORD</Text>
-                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "currentpassword": text })} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "currentpassword": text })} underlineColorAndroid="#6090" autoFocus={true}/>
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NEW PASSWORD</Text>

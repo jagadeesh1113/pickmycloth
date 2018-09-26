@@ -36,12 +36,12 @@ export default class ForgetPassword extends React.Component {
     }
 
     render() {
-        return (
+    return (
             <View style={this.state.style.loginpage} >
                 <Text style={this.state.style.logintext}></Text>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>EMAIL</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
+                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" autoFocus={true}/>
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.login() }.bind(this)}>
