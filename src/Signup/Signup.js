@@ -36,19 +36,19 @@ export default class Signup extends React.Component {
                 <Text style={this.state.style.logintext}></Text>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NAME</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "userName": text })} underlineColorAndroid="#6090" />
+                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>EMAIL</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "userName": text })} underlineColorAndroid="#6090" />
+                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>PASSWORD</Text>
-                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "userName": text })} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "password": text })} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
-                    <TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ "password": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>

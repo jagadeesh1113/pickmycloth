@@ -19,19 +19,9 @@ export default class ChangePassword extends React.Component {
         header: null
     }
 
-    login() {
+    profile() {
         const { navigate } = this.props.navigation;
         navigate("Profile");
-    }
-
-    beforeSignUp() {
-        const { navigate } = this.props.navigation;
-        navigate("BeforeSignup");
-    }
-
-    forgetPassword() {
-        const { navigate } = this.props.navigation;
-        navigate("ForgetPassword");
     }
 
     render() {
@@ -39,18 +29,18 @@ export default class ChangePassword extends React.Component {
             <View style={this.state.style.loginpage} >
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CURRENT PASSWORD</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "userName": text })} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "currentpassword": text })} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NEW PASSWORD</Text>
-                    <TextInput style={this.state.style.username} onChangeText={(text) => this.setState({ "userName": text })} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} style={this.state.style.username} onChangeText={(text) => this.setState({ "newpassword": text })} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
-                    <TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ "password": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                    <TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                 </View>
                 <View style={this.state.style.inputs}>
-                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.login() }.bind(this)}>
+                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.profile() }.bind(this)}>
                         <Text style={this.state.style.loginbtnlabel}>SAVE</Text>
                     </TouchableOpacity>
                 </View>

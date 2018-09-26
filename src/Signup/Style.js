@@ -53,8 +53,6 @@ export const style = StyleSheet.create({
                 borderStyle:"solid",
                 borderBottomWidth:2,
                 fontWeight: "700",
-                
-
         },
         inputs:{
                 direction:"rtl",

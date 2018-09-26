@@ -32,20 +32,7 @@ export default class ForgetPassword extends React.Component {
 
     forgetPassword() {
         const { navigate } = this.props.navigation;
-        var url = 'http://pickmycloth.com/api/forgotpassword';
-        var data = { email: this.state.email };
-        fetch(url, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .then(responseData => {
-                if (responseData && responseData.data) {
-                    navigate('Login');
-                }
-            }).catch(error => console.error('Error:', error));
+        navigate('Login');
     }
 
     render() {
