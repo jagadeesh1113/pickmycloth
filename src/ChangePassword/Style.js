@@ -8,38 +8,27 @@ export const style = StyleSheet.create({
 
         loginpage:{
                 width:"100%",
-                height:"100%",
-        },
-        splashStyle:{
-                flex:1 , 
-                width: undefined,
-                 height: undefined
-        },
-        logincontent:{
-                width:"100%",
-                height:"100%",
+                height:"100%"
         },
         logintext:{
                 fontSize:26,
-                color:'black',
+                color:"white",
                 marginLeft:"10%",
-                marginTop:"15%",
+                marginTop:"45%",
                 fontWeight: "900",
                 shadowColor: '#000',
                 shadowOffset: { width: 0, height: 2 },
                 shadowOpacity: 0.2,
                 shadowRadius: 2,
                 elevation:2,
-        
         },
 
         centername:{
-                fontSize:15 ,
+                fontSize:15,
                 color:"black",
                 marginLeft:"10%",
                 marginTop:20,
                 fontWeight: "900",
-
         },
         
         username:{
@@ -53,15 +42,12 @@ export const style = StyleSheet.create({
                 borderStyle:"solid",
                 borderBottomWidth:2,
                 fontWeight: "700",
-                
-
         },
         inputs:{
                 direction:"rtl",
                 width:inputwidth,
                 marginBottom:10,
                 },   
-
         loginbtn:{
                 width:"45%",
                 height:55,
@@ -77,28 +63,16 @@ export const style = StyleSheet.create({
                 shadowRadius: 2,
                 elevation:2,
         },
-
         loginbtnlabel:{
                 fontSize:10,
                 color:"white",
-                
         },
-
         passwordviewstyle:{
                 height:35,
                 flexDirection:'row',
-               
-                
-
         },
-
         keepmestyleviewstyle:{
                 marginLeft:"10%",
                 marginTop:10,
-
         },
-
-
-      
-
 })

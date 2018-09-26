@@ -7,6 +7,7 @@ import Signup from './src/Signup/Signup';
 import BeforeSignup from './src/BeforeSignup/BeforeSignup';
 import Profile from './src/Profile/Profile';
 import ForgetPassword from './src/ForgetPassword/ForgetPassword';
+import ChangePassword from './src/ChangePassword/ChangePassword';
 
 export default class App extends React.Component {
   render() {
@@ -23,7 +24,8 @@ const Routes = createStackNavigator({
   BeforeSignup: { screen: BeforeSignup},
   Signup: { screen: Signup },
   Profile: { screen: Profile },
-  ForgetPassword: { screen: ForgetPassword}
+  ForgetPassword: { screen: ForgetPassword},
+  ChangePassword: { screen: ChangePassword}
 });
 
 const styles = StyleSheet.create({

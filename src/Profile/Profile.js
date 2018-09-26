@@ -28,6 +28,11 @@ export default class Profile extends React.Component {
         navigate("Login");
     }
 
+    changePassword() {
+        const { navigate } = this.props.navigation;
+        navigate("ChangePassword");
+    }
+
     render() {
         return (
             <ScrollView style={{ width: "100%", height: "100%" }}>
@@ -60,6 +65,11 @@ export default class Profile extends React.Component {
                     <View style={this.state.style.inputs}>
                         <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
                             <Text style={this.state.style.saveButtonLabel}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={this.state.style.inputs}>
+                        <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.changePassword() }.bind(this)}>
+                            <Text style={this.state.style.saveButtonLabel}>CHANGE PASSWORD</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

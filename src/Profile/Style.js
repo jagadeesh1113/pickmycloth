@@ -9,7 +9,6 @@ export const style = StyleSheet.create({
         loginpage:{
                 width:"100%",
                 height:"100%",
-                // backgroundColor: "#003366"
         },
         splashStyle:{
                 flex:1 , 
@@ -66,7 +65,7 @@ export const style = StyleSheet.create({
         loginbtn:{
                 width:"45%",
                 height:55,
-                backgroundColor:"#82807e",
+                backgroundColor:"black",
                 borderRadius:10000,
                 alignItems:"center",
                 justifyContent:"center",
