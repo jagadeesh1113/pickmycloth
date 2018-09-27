@@ -51,7 +51,7 @@ export default class ForgetPassword extends React.Component {
                           emailError: validate('email', this.state.email)
                         })
                       }} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" autoFocus={true}/>
-                    <Text style={this.state.style.error}>{this.state.emailError}</Text>
+                    { this.state.emailError ? <Text style={this.state.style.error}>{this.state.emailError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.login() }.bind(this)}>

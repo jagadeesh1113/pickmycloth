@@ -43,7 +43,7 @@ export default class ChangePassword extends React.Component {
                           currentpasswordError: validate('password', this.state.currentpassword)
                         })
                       }} style={this.state.style.username} onChangeText={(text) => this.setState({ "currentpassword": text })} underlineColorAndroid="#6090" autoFocus={true}/>
-                      <Text style={this.state.style.error}>{this.state.currentpasswordError}</Text>
+                      {this.state.currentpasswordError ? <Text style={this.state.style.error}>{this.state.currentpasswordError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>NEW PASSWORD</Text>
@@ -53,7 +53,7 @@ export default class ChangePassword extends React.Component {
                           newpasswordError: validate('password', this.state.newpassword)
                         })
                       }} style={this.state.style.username} onChangeText={(text) => this.setState({ "newpassword": text })} underlineColorAndroid="#6090" />
-                    <Text style={this.state.style.error}>{this.state.newpasswordError}</Text>
+                    {this.state.newpasswordError ? <Text style={this.state.style.error}>{this.state.newpasswordError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
@@ -63,7 +63,7 @@ export default class ChangePassword extends React.Component {
                           confirmpasswordError: validate('password', this.state.confirmpassword)
                         })
                       }} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
-                    <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text>
+                    {this.state.confirmpasswordError ? <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.profile() }.bind(this)}>

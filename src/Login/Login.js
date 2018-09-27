@@ -63,7 +63,7 @@ export default class Login extends React.Component {
                           emailError: validate('email', this.state.email)
                         })
                       }} underlineColorAndroid="#6090" autoFocus={true} />
-                    <Text style={this.state.style.error}>{this.state.emailError}</Text>
+                    {this.state.emailError ? <Text style={this.state.style.error}>{this.state.emailError}</Text> : null}
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>PASSWORD</Text>

@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
                               nameError: validate('name', this.state.name)
                             })
                           }} value={this.state.name} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true} />
-                        <Text style={this.state.style.error}>{this.state.nameError}</Text>
+                        { this.state.nameError ? <Text style={this.state.style.error}>{this.state.nameError}</Text> : null }
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>Email</Text>

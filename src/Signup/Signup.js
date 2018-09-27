@@ -52,7 +52,7 @@ export default class Signup extends React.Component {
                           nameError: validate('name', this.state.name)
                         })
                       }} onChangeText={(text) => this.setState({ "name": text })} underlineColorAndroid="#6090" autoFocus={true}/>
-                    <Text style={this.state.style.error}>{this.state.nameError}</Text>
+                    {this.state.nameError ? <Text style={this.state.style.error}>{this.state.nameError}</Text> : null}
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>EMAIL</Text>
@@ -61,7 +61,7 @@ export default class Signup extends React.Component {
                           emailError: validate('email', this.state.email)
                         })
                       }} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" />
-                    <Text style={this.state.style.error}>{this.state.emailError}</Text>
+                    {this.state.emailError ? <Text style={this.state.style.error}>{this.state.emailError}</Text> :null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>PASSWORD</Text>
@@ -71,7 +71,7 @@ export default class Signup extends React.Component {
                           passwordError: validate('password', this.state.password)
                         })
                       }} onChangeText={(text) => this.setState({ "password": text })} underlineColorAndroid="#6090" />
-                    <Text style={this.state.style.error}>{this.state.passwordError}</Text>
+                    {this.state.passwordError ? <Text style={this.state.style.error}>{this.state.passwordError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
@@ -81,7 +81,7 @@ export default class Signup extends React.Component {
                           confirmpasswordError: validate('password', this.state.confirmpassword)
                         })
                       }} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
-                    <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text>
+                    {this.state.confirmpasswordError ? <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
