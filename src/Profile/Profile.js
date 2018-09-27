@@ -39,6 +39,19 @@ export default class Profile extends React.Component {
             <ScrollView style={{ width: "100%", height: "100%" }}>
                 <View style={this.state.style.loginpage} >
                     <Text style={this.state.style.logintext}></Text>
+                    <Image
+     style={{
+       paddingVertical: 10,
+       marginLeft: 100,
+       width: 150,
+       height: 150,
+       borderRadius: 75
+     }}
+     resizeMode='cover'
+     source={{
+       uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+     }}
+   />
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>Name</Text>
                         <TextInput style={this.state.style.username} 
