@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, Dimensions, Image, TouchableOpacity } from 'react-native';
 import validate from '../Validation/validate_wrapper';
+import Service from '../Api/Api';
 
 import { style } from './Style';
 
@@ -28,17 +29,21 @@ export default class Login extends React.Component {
         const emailError = validate('email', this.state.email)
         const passwordError = validate('password', this.state.password)
 
-        this.setState({
-            emailError: emailError,
-            passwordError: passwordError
-        })
-
         if (!emailError && !passwordError) {
-            alert('Details are valid!')
+            Service.loginUser(this.state.email, this.state.password).then((response) => {
+                if(response){
+                    const { navigate } = this.props.navigation;
+                    navigate("Profile");
+                }
+            })
+        } else {
+            this.setState({
+                emailError: emailError,
+                passwordError: passwordError
+            })    
         }
 
-        const { navigate } = this.props.navigation;
-        navigate("Profile");
+
     }
 
     beforeSignUp() {

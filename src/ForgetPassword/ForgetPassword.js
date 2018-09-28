@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, TextInput, Dimensions, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import validate from '../Validation/validate_wrapper';
 import { style } from './Style';
+import Service from '../Api/Api';
 
 export default class ForgetPassword extends React.Component {
-
-    
 
     constructor(props) {
         super(props);
@@ -25,7 +24,7 @@ export default class ForgetPassword extends React.Component {
 
     login() {
         const { navigate } = this.props.navigation;
-        navigate("Profile");
+        navigate("Login");
     }
 
 
@@ -35,8 +34,21 @@ export default class ForgetPassword extends React.Component {
     }
 
     forgetPassword() {
-        const { navigate } = this.props.navigation;
-        navigate('Login');
+
+        const emailError = validate('email', this.state.email);
+
+        if(!emailError){
+            Service.forgotPassword(this.state.email).then((response) => {
+                if(response){
+                    const { navigate } = this.props.navigation;
+                    navigate('Login');
+                }
+            })
+        } else {
+            this.setState({
+                emailError : emailError
+            })
+        }
     }
 
     render() {
@@ -54,18 +66,18 @@ export default class ForgetPassword extends React.Component {
                     { this.state.emailError ? <Text style={this.state.style.error}>{this.state.emailError}</Text> : null }
                 </View>
                 <View style={this.state.style.inputs}>
+                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.forgetPassword() }.bind(this)}>
+                        <Text style={this.state.style.loginbtnlabel}>RESET PASSWORD</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.login() }.bind(this)}>
-                        <Text style={this.state.style.loginbtnlabel}>LOGIN</Text>
+                        <Text style={this.state.style.loginbtnlabel}>GO TO LOGIN</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={this.state.style.inputs}>
                     <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
-                        <Text style={this.state.style.loginbtnlabel}>SIGN UP</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={this.state.style.inputs}>
-                    <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.forgetPassword() }.bind(this)}>
-                        <Text style={this.state.style.loginbtnlabel}>FORGOT PASSWORD</Text>
+                        <Text style={this.state.style.loginbtnlabel}>GO TO SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
             </View>

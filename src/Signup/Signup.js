@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import validate from '../Validation/validate_wrapper';
 import { style } from './Style';
+import Service from '../Api/Api';
 
 export default class Signup extends React.Component {
-
-    
 
     constructor(props) {
         super(props);
@@ -36,8 +35,28 @@ export default class Signup extends React.Component {
     }
 
     signUp() {
-        const { navigate } = this.props.navigation;
-        navigate("Login");
+        const emailError = validate('email', this.state.email)
+        const passwordError = validate('password', this.state.password)
+        const nameError = validate('name', this.state.name);
+
+        let confirmpasswordError = '';
+        if(this.state.password !== this.state.confirmpassword){
+            confirmpasswordError = 'Password does not match';
+        }
+
+        if(!emailError && !passwordError && !nameError && !confirmpasswordError){
+            Service.signUp(this.state.name, this.state.email, this.state.password).then((response) => {
+                const { navigate } = this.props.navigation;
+                navigate("Login");
+            })
+        } else {
+            this.setState({
+                emailError: emailError,
+                passwordError: passwordError,
+                nameError: nameError,
+                confirmpasswordError: confirmpasswordError
+            })
+        }
     }
 
     render() {
@@ -77,9 +96,15 @@ export default class Signup extends React.Component {
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
                     <TextInput secureTextEntry={true} 
                     onBlur={() => {
-                        this.setState({
-                          confirmpasswordError: validate('password', this.state.confirmpassword)
-                        })
+                        if(this.state.password !== this.state.confirmpassword){
+                            this.setState({
+                              confirmpasswordError: 'Password does not match'
+                            })
+                        } else {
+                            this.setState({
+                                confirmpasswordError: ''
+                              })
+                        }
                       }} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                     {this.state.confirmpasswordError ? <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text> : null }
                 </View>

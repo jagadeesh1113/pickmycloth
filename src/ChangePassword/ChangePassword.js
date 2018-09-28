@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, TextInput, Dimensions, Image, TouchableOpacity} from 'react-native';
 import validate from '../Validation/validate_wrapper'
 import { style } from './Style';
+import Service from '../Api/Api';
 
 export default class ChangePassword extends React.Component {
-
-    
 
     constructor(props) {
         super(props);
@@ -28,8 +27,22 @@ export default class ChangePassword extends React.Component {
     }
 
     profile() {
-        const { navigate } = this.props.navigation;
-        navigate("Profile");
+        
+        const currentpasswordError = validate('password', this.state.currentpassword);
+        const newpasswordError = validate('password', this.state.newpassword);
+        let confirmpasswordError = '';
+        if(this.state.newpassword !== this.state.confirmpassword){
+            confirmpasswordError = 'Password does not match'
+        }
+
+        if(!currentpasswordError && !newpasswordError && !confirmpasswordError){
+            Service.changePassword(this.state).then((response) => {
+                if(response){
+                    const { navigate } = this.props.navigation;
+                    navigate("Login");
+                }
+            });
+        }
     }
 
     render() {
@@ -59,9 +72,11 @@ export default class ChangePassword extends React.Component {
                     <Text style={this.state.style.centername}>CONFIRM PASSWORD</Text>
                     <TextInput secureTextEntry={true} 
                     onBlur={() => {
-                        this.setState({
-                          confirmpasswordError: validate('password', this.state.confirmpassword)
-                        })
+                        if(this.state.newpassword !== this.state.confirmpassword){
+                            this.setState({
+                              confirmpasswordError: 'Password does not match'
+                            })
+                        }
                       }} onChangeText={(text) => this.setState({ "confirmpassword": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                     {this.state.confirmpasswordError ? <Text style={this.state.style.error}>{this.state.confirmpasswordError}</Text> : null }
                 </View>

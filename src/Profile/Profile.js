@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import validate from '../Validation/validate_wrapper';
 import { style } from './Style';
+import Service from '../Api/Api';
 
 export default class Profile extends React.Component {
 
@@ -16,7 +17,12 @@ export default class Profile extends React.Component {
             width: Dimensions.get("window").width,
             height: Dimensions.get("window").height,
             name: 'Jagadeesh Y M',
-            nameError: ''
+            nameError: '',
+            email: '',
+            address: '',
+            phone: '',
+            postalcode: '',
+            city: ''
         }
     }
 
@@ -24,9 +30,22 @@ export default class Profile extends React.Component {
         header: null
     }
 
-    signUp() {
-        const { navigate } = this.props.navigation;
-        navigate("Login");
+    save() {
+
+        const nameError = validate('name', this.state.name);
+
+        if(!nameError){
+            Service.updateProfile(this.state).then((response) => {
+                if(response){
+                    const { navigate } = this.props.navigation;
+                    navigate("Login");
+                }
+            })
+        } else {
+            this.setState({
+                nameError : nameError
+            })
+        }
     }
 
     changePassword() {
@@ -64,26 +83,26 @@ export default class Profile extends React.Component {
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>Email</Text>
-                        <TextInput style={this.state.style.username} value={"jagadeesh1113@gmail.com"} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" editable={false}/>
+                        <TextInput style={this.state.style.username} value={this.state.email} onChangeText={(text) => this.setState({ "email": text })} underlineColorAndroid="#6090" editable={false}/>
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>PHONE</Text>
-                        <TextInput style={this.state.style.username} value={"9840183109"} onChangeText={(text) => this.setState({ "phone": text })} underlineColorAndroid="#6090" />
+                        <TextInput style={this.state.style.username} value={this.state.phone} onChangeText={(text) => this.setState({ "phone": text })} underlineColorAndroid="#6090" />
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>ADDRESS</Text>
-                        <TextInput style={this.state.style.username} value={""} onChangeText={(text) => this.setState({ "address": text })} underlineColorAndroid="#6090" />
+                        <TextInput style={this.state.style.username} value={this.state.address} onChangeText={(text) => this.setState({ "address": text })} underlineColorAndroid="#6090" />
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>CITY</Text>
-                        <TextInput value={""} onChangeText={(text) => this.setState({ "city": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                        <TextInput value={this.state.city} onChangeText={(text) => this.setState({ "city": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                     </View>
                     <View style={this.state.style.inputs}>
                         <Text style={this.state.style.centername}>POSTAL CODE</Text>
-                        <TextInput value={""} onChangeText={(text) => this.setState({ "postalcode": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
+                        <TextInput value={this.state.postalcode} onChangeText={(text) => this.setState({ "postalcode": text })} style={this.state.style.username} underlineColorAndroid="#6090" />
                     </View>
                     <View style={this.state.style.inputs}>
-                        <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.signUp() }.bind(this)}>
+                        <TouchableOpacity style={this.state.style.loginbtn} onPress={function () { this.save() }.bind(this)}>
                             <Text style={this.state.style.saveButtonLabel}>Save</Text>
                         </TouchableOpacity>
                     </View>
